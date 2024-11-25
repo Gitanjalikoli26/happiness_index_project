@@ -1,0 +1,350 @@
+{% extends 'base.html' %}
+{% block title %}Dashboard{% endblock title %}
+{% block body %}
+
+{% if user.is_authenticated %}
+<div class="container">
+    <div class="card mb-2">
+        <div class="row col-10 m-auto mt-5">
+            <p class="text-end mt-5">Name: <span><b>{{fname}} {{lname}}</b>  </span> </p>
+            <p class="text-end">Designation: <span><b>{{designation}} </b>  </span> </p>
+            <h1 class="mt-2 mb-4">Feedback Form</h1>
+            <h6 class="text-danger">Note : </h6>
+            <hr>
+        </div>
+        <form action="" method="post">
+            {% csrf_token %}
+            {% if designation == "Staff" %}
+            <div class="row col-lg-10 m-auto mt-2">
+                <div class="col-lg-6">
+                    <div class="col-10 m-2">
+                        <label for="fname">
+                            <h5>1. Do you feel the work environment promotes collaboration among teachers?</h5>
+                        </label>
+                        {{form.q1}}
+                    </div>
+                    <div class="col-10 m-2">
+                        <label for="lname">
+                            <h5>2. Are you satisfied with the resources and facilities provided for teaching?</h5>
+                        </label>
+                        {{form.q2}}
+                    </div>
+                    <div class="col-10 m-2">
+                        <label for="email">
+                            <h5>3. How effective do you find the professional development opportunities offered by the organization?</h5>
+                        </label>
+                        {{form.q3}}
+                    </div>
+                    <div class="col-10 m-2">
+                        <label for="password">
+                            <h5>4. To what extent does the organization support your career growth and advancement?</h5>
+                        </label>
+                        {{form.q4}}
+                    </div>
+                    <div class="col-10 m-2">
+                        <label for="password">
+                            <h5>5. How would you rate the communication and feedback channels within the organization?</h5>
+                        </label>
+                        {{form.q5}}
+                    </div>
+                    <div class="col-10 m-2">
+                        <label for="password">
+                            <h5>6. Are there sufficient opportunities for collaboration with other departments or educators?</h5>
+                        </label>
+                        {{form.q6}}
+                    </div>
+                    <div class="col-10 m-2">
+                        <label for="password">
+                            <h5>7. How would you rate the support provided for maintaining a healthy work-life balance?</h5>
+                        </label>
+                        {{form.q7}}
+                    </div>
+                    <div class="col-10 m-2">
+                        <label for="password">
+                            <h5>8. On a scale of 1-10, how effective is the organization in addressing teacher concerns and grievances?</h5>
+                        </label>
+                        {{form.q8}}
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="col-10 m-2">
+                        <label for="password">
+                            <h5>9. How well do you feel supported in implementing innovative teaching methods?</h5>
+                        </label>
+                        {{form.q9}}
+                    </div>
+                    <div class="col-10 m-2">
+                        <label for="password">
+                            <h5>10. How would you rate the recognition and appreciation of teacher contributions within the organization?</h5>
+                        </label>
+                        {{form.q10}}
+                    </div>
+                    <div class="col-10 m-2">
+                        <label for="password">
+                            <h5>11. How challenging do you find the teaching assignments and responsibilities?</h5>
+                        </label>
+                        {{form.q11}}
+                    </div>
+                    <div class="col-10 m-2">
+                        <label for="password">
+                            <h5>12. Do you receive adequate support and resources to address student needs and challenges?</h5>
+                        </label>
+                        {{form.q12}}
+                    </div>
+                    <div class="col-10 m-2">
+                        <label for="password">
+                            <h5>13. How would you rate the alignment of curriculum with educational goals and standards?</h5>
+                        </label>
+                        {{form.q13}}
+                    </div>
+                    <div class="col-10 m-2">
+                        <label for="password">
+                            <h5>14. To what extent do you feel encouraged to engage in professional development activities?</h5>
+                        </label>
+                        {{form.q14}}
+                    </div>
+                    <div class="col-10 m-2">
+                        <label for="password">
+                            <h5>15. How effective is the organization in providing necessary support and resources for special projects or initiatives?</h5>
+                        </label>
+                        {{form.q15}}
+                    </div>
+                    <div class="col-10 m-2">
+                        <label for="password">
+                            <h5>16. Provide a brief overview of your experience working within the organization.</h5>
+                        </label>
+                        {{form.feedback}}
+                    </div>
+                </div>
+            </div>
+            {% elif designation == "Student" %}
+            <div class="row col-lg-10 m-auto mt-2">
+                <div class="col-lg-6">
+                    <div class="col-10 m-2 ">
+                        <label for="fname">
+                            <h5>1. Do you feel campus is environment friendly?
+                            </h5>
+                        </label>
+                        {{form.q1}}
+                    </div>
+                    <div class="col-10 m-2">
+                        <label for="lname">
+                            <h5>2. Are you satisfied with the infrastructure?</h5>
+                        </label>
+                        {{form.q2}}
+                    </div>
+                    <div class="col-10 m-2">
+                        <label for="email">
+                            <h5>3. Does mentoring program helps you to improve your learning and motivates towards
+                                your future?
+                            </h5>
+                        </label>
+                        {{form.q3}}
+                    </div>
+                    <div class="col-10 m-2">
+                        <label for="password">
+                            <h5>4. How much school/ college supports parental involvement?
+                            </h5>
+                        </label>
+                        {{form.q4}}
+                    </div>
+                    <div class="col-10 m-2">
+                        <label for="password">
+                            <h5>5. School college environment is free of bullying or not?
+                            </h5>
+                        </label>
+                        {{form.q5}}
+                    </div>
+                    <div class="col-10 m-2">
+                        <label for="password">
+                            <h5>6. How much school/college supports social activities?
+                            </h5>
+                        </label>
+                        {{form.q6}}
+                    </div>
+                    <div class="col-10 m-2">
+                        <label for="password">
+                            <h5>7. How is the sports facility in school/college?
+                            </h5>
+                        </label>
+                        {{form.q7}}
+                    </div>
+                    <div class="col-10 m-2">
+                        <label for="password">
+                            <h5>8. On the scale of (1-10) how will rate discipline followed by school/college?</h5>
+                        </label>
+                        {{form.q8}}
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    
+                    <div class="col-10 m-2">
+                        <label for="password">
+                            <h5>9. How well the teachers are skilled in subject? </h5>
+                        </label>
+                        {{form.q9}}
+                    </div>
+
+                    <div class="col-10 m-2">
+                        <label for="password">
+                            <h5>10. How will rate the use of presentation of students?</h5>
+                        </label>
+                        {{form.q10}}
+                    </div>
+                    <div class="col-10 m-2">
+                        <label for="password">
+                            <h5>11. How much do you rate the degree of difficulty of assignment?</h5>
+                        </label>
+                        {{form.q11}}
+                    </div>
+                    <div class="col-10 m-2">
+                        <label for="password">
+                            <h5>12. Do teachers helps you to solve doubt or not?</h5>
+                        </label>
+                        {{form.q12}}
+                    </div>
+                    <div class="col-10 m-2">
+                        <label for="password">
+                            <h5>13. How will you rate the structuring of course?
+                            </h5>
+                        </label>
+                        {{form.q13}}
+                    </div>
+                    <div class="col-10 m-2">
+                        <label for="password">
+                            <h5>14. How much school/college provides support for students going above and beyond?
+                            </h5>
+                        </label>
+                        {{form.q14}}
+                    </div>
+                    <div class="col-10 m-2">
+                        <label for="password">
+                            <h5>15. Does school college provides course recommendation based on relevance?
+                            </h5>
+                        </label>
+                        {{form.q15}}
+                    </div>
+                    <div class="col-10 m-2">
+                        <label for="password">
+                            <h5>16. Give the Short Review for School
+                            </h5>
+                        </label>
+                        {{form.feedback}}
+                    </div>
+                </div>
+
+            </div>
+            {% else %}
+            <div class="row col-lg-10 m-auto mt-2">
+                <div class="col-lg-6">
+                    <div class="col-10 m-2">
+                        <label for="fname">
+                            <h5>1. Do you feel the work environment promotes teamwork and collaboration?</h5>
+                        </label>
+                        {{form.q1}}
+                    </div>
+                    <div class="col-10 m-2">
+                        <label for="lname">
+                            <h5>2. Are you satisfied with the resources and tools provided for your role?</h5>
+                        </label>
+                        {{form.q2}}
+                    </div>
+                    <div class="col-10 m-2">
+                        <label for="email">
+                            <h5>3. How effective do you find the professional development opportunities offered by the organization?</h5>
+                        </label>
+                        {{form.q3}}
+                    </div>
+                    <div class="col-10 m-2">
+                        <label for="password">
+                            <h5>4. To what extent does the organization support your career growth and advancement?</h5>
+                        </label>
+                        {{form.q4}}
+                    </div>
+                    <div class="col-10 m-2">
+                        <label for="password">
+                            <h5>5. How would you rate the communication channels and information sharing within the organization?</h5>
+                        </label>
+                        {{form.q5}}
+                    </div>
+                    <div class="col-10 m-2">
+                        <label for="password">
+                            <h5>6. Are there sufficient opportunities for cross-departmental collaboration and projects?</h5>
+                        </label>
+                        {{form.q6}}
+                    </div>
+                    <div class="col-10 m-2">
+                        <label for="password">
+                            <h5>7. How would you rate the support provided for maintaining a healthy work-life balance?</h5>
+                        </label>
+                        {{form.q7}}
+                    </div>
+                    <div class="col-10 m-2">
+                        <label for="password">
+                            <h5>8. On a scale of 1-10, how effective is the organization in addressing staff concerns and grievances?</h5>
+                        </label>
+                        {{form.q8}}
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="col-10 m-2">
+                        <label for="password">
+                            <h5>9. How well do you feel supported in your day-to-day responsibilities?</h5>
+                        </label>
+                        {{form.q9}}
+                    </div>
+                    <div class="col-10 m-2">
+                        <label for="password">
+                            <h5>10. How would you rate the recognition and appreciation of staff contributions within the organization?</h5>
+                        </label>
+                        {{form.q10}}
+                    </div>
+                    <div class="col-10 m-2">
+                        <label for="password">
+                            <h5>11. How challenging do you find the tasks and assignments given to you?</h5>
+                        </label>
+                        {{form.q11}}
+                    </div>
+                    <div class="col-10 m-2">
+                        <label for="password">
+                            <h5>12. Do you receive adequate support and resources to fulfill your job responsibilities?</h5>
+                        </label>
+                        {{form.q12}}
+                    </div>
+                    <div class="col-10 m-2">
+                        <label for="password">
+                            <h5>13. How would you rate the alignment of your role with the organization's goals and objectives?</h5>
+                        </label>
+                        {{form.q13}}
+                    </div>
+                    <div class="col-10 m-2">
+                        <label for="password">
+                            <h5>14. To what extent do you feel encouraged to pursue further education or skills development?</h5>
+                        </label>
+                        {{form.q14}}
+                    </div>
+                    <div class="col-10 m-2">
+                        <label for="password">
+                            <h5>15. How effective is the organization in providing necessary support and resources for special projects or initiatives?</h5>
+                        </label>
+                        {{form.q15}}
+                    </div>
+                    <div class="col-10 m-2">
+                        <label for="password">
+                            <h5>16. Provide a brief overview of your experience working within the organization.</h5>
+                        </label>
+                        {{form.feedback}}
+                    </div>
+                </div>
+            </div>
+            {% endif %}
+            
+            <div class="row col-1 m-auto mt-3 mb-3">
+                <button type="submit" class="btn btn-outline-dark btn-lg">Submit</button>
+            </div>
+
+        </form>
+    </div>
+</div>
+{% endif %}
+{% endblock body %}

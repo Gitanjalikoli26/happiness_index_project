@@ -1,0 +1,314 @@
+{% extends 'base.html' %}
+{% block title %}Report{% endblock title %}
+{% block body %}
+
+{% if user.is_authenticated %}
+<div class="container">
+    <div class="card mb-2">
+        <div class="row col-10 m-auto mt-5">
+            <h1 class="text-center mt-5 mb-4">Feedback Report</h1>
+            <hr>
+        </div>
+        <div class="row col-lg-11 m-auto mt-2" style="height:450px;">
+            <div class="col-3">
+                <div class="col-10 m-2 ">
+                    <h4>Information</h4>
+                    <hr>
+                </div>
+                <div class="col-10 m-2">
+                    <label for="lname">
+                        <h6>
+                            Name : <br> <b> {{student.name}} </b>
+                        </h6>
+                    </label>
+                </div>
+                <div class="col-10 m-2">
+                    <label for="lname">
+                        <h6>
+                            Designation : <br> <b> {{student.designation}} </b>
+                        </h6>
+                    </label>
+                </div>
+                
+                {% if student.happiness_index == 'Happy' %}
+                <div class="col-10 m-2">
+                    <label for="standard">
+                        <h6>Happiness Index : <b> {{student.happiness_index}} </b> </h6>
+                        <img src="static/img/happy_gif.gif" style="height: fit-content;">
+                    </label>
+                </div>
+                {% elif student.happiness_index == 'Moderate Happy' %}
+                <div class="col-10 m-2">
+                    <label for="standard">
+                        <h6>Happiness Index : <b> {{student.happiness_index}} </b> </h6>
+                        <img src="static/img/smiling_face.gif" style="height: fit-content;">
+                    </label>
+                </div>
+                {% else %}
+                <div class="col-10 m-2">
+                    <label for="standard">
+                        <h6>Happiness Index : <b> {{student.happiness_index}} </b> </h6>
+                        <img src="static/img/sad.gif" style="height: fit-content;">
+                    </label>
+                </div>
+                {% endif %}
+            </div>
+            <div class="col-9" style="height: 400px; overflow: auto;">
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th scope="col">Q. No.</th>
+                            <th scope="col">Questions</th>
+                            <th scope="col">Ratings</th>
+                        </tr>
+                    </thead>
+                    {% if designation == "Staff" %}
+                    <tbody>
+                        <tr>
+                            <th scope="row">1</th>
+                            <td>Do you feel the work environment promotes collaboration among teachers?</td>
+                            <td>{{student.q1}}</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">2</th>
+                            <td>Are you satisfied with the resources and facilities provided for teaching?</td>
+                            <td>{{student.q2}}</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">3</th>
+                            <td>How effective do you find the professional development opportunities offered by the organization?</td>
+                            <td>{{student.q3}}</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">4</th>
+                            <td>To what extent does the organization support your career growth and advancement?</td>
+                            <td>{{student.q4}}</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">5</th>
+                            <td>How would you rate the communication and feedback channels within the organization?</td>
+                            <td>{{student.q5}}</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">6</th>
+                            <td>Are there sufficient opportunities for collaboration with other departments or educators?</td>
+                            <td>{{student.q6}}</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">7</th>
+                            <td>How would you rate the support provided for maintaining a healthy work-life balance?</td>
+                            <td>{{student.q7}}</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">8</th>
+                            <td>On a scale of 1-10, how effective is the organization in addressing teacher concerns and grievances?</td>
+                            <td>{{student.q8}}</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">9</th>
+                            <td>How well do you feel supported in implementing innovative teaching methods?</td>
+                            <td>{{student.q9}}</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">10</th>
+                            <td>How would you rate the recognition and appreciation of teacher contributions within the organization?</td>
+                            <td>{{student.q10}}</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">11</th>
+                            <td>How challenging do you find the teaching assignments and responsibilities?</td>
+                            <td>{{student.q11}}</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">12</th>
+                            <td>Do you receive adequate support and resources to address student needs and challenges?</td>
+                            <td>{{student.q12}}</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">13</th>
+                            <td>How would you rate the alignment of curriculum with educational goals and standards?</td>
+                            <td>{{student.q13}}</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">14</th>
+                            <td>To what extent do you feel encouraged to engage in professional development activities?</td>
+                            <td>{{student.q14}}</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">15</th>
+                            <td>How effective is the organization in providing necessary support and resources for special projects or initiatives?</td>
+                            <td>{{student.q15}}</td>
+                        </tr>
+                    </tbody>
+                    
+                    {% elif designation == "Student" %}
+                    <tbody>
+                        <tr>
+                            <th scope="row">1</th>
+                            <td>Do you feel campus is environment friendly?</td>
+                            <td>{{student.q1}}</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">2</th>
+                            <td>Are you satisfied with the infrastructure?</td>
+                            <td>{{student.q2}}</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">3</th>
+                            <td>Does mentoring program helps you to improve your learning and motivates towards your
+                                future?</td>
+                            <td>{{student.q3}}</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">4</th>
+                            <td>How much school/ college supports parental involvement?</td>
+                            <td>{{student.q4}}</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">5</th>
+                            <td>School college environment is free of bullying or not?</td>
+                            <td>{{student.q5}}</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">6</th>
+                            <td>How much school/college supports social activities?</td>
+                            <td>{{student.q6}}</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">7</th>
+                            <td>how is the sports facility in school/college?</td>
+                            <td>{{student.q7}}</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">8</th>
+                            <td>On the scale of (1-10) how will rate discipline followed by school/college?</td>
+                            <td>{{student.q8}}</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">9</th>
+                            <td>How well the teachers are skilled in subject? </td>
+                            <td>{{student.q9}}</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">10</th>
+                            <td>How will rate the use of presentation of students?</td>
+                            <td>{{student.q10}}</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">11</th>
+                            <td>How much do you rate the degree of difficulty of assignment?</td>
+                            <td>{{student.q11}}</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">12</th>
+                            <td>Do teachers helps you to solve doubt or not?</td>
+                            <td>{{student.q12}}</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">13</th>
+                            <td>How will you rate the structuring of course?</td>
+                            <td>{{student.q13}}</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">14</th>
+                            <td>How much school/college provides support for students going above and beyond?</td>
+                            <td>{{student.q14}}</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">15</th>
+                            <td>Does school college provides course recommendation based on relevance?</td>
+                            <td>{{student.q15}}</td>
+                        </tr>
+                    </tbody>
+                    {% else %}
+                    <tbody>
+                        <tr>
+                            <th scope="row">1</th>
+                            <td>Do you feel the work environment promotes teamwork and collaboration?</td>
+                            <td>{{student.q1}}</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">2</th>
+                            <td>Are you satisfied with the resources and tools provided for your role?</td>
+                            <td>{{student.q2}}</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">3</th>
+                            <td>How effective do you find the professional development opportunities offered by the organization?</td>
+                            <td>{{student.q3}}</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">4</th>
+                            <td>To what extent does the organization support your career growth and advancement?</td>
+                            <td>{{student.q4}}</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">5</th>
+                            <td>How would you rate the communication channels and information sharing within the organization?</td>
+                            <td>{{student.q5}}</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">6</th>
+                            <td>Are there sufficient opportunities for cross-departmental collaboration and projects?</td>
+                            <td>{{student.q6}}</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">7</th>
+                            <td>How would you rate the support provided for maintaining a healthy work-life balance?</td>
+                            <td>{{student.q7}}</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">8</th>
+                            <td>On the scale of (1-10) how will rate discipline followed by school/college?</td>
+                            <td>{{student.q8}}</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">9</th>
+                            <td>How well do you feel supported in your day-to-day responsibilities?</td>
+                            <td>{{student.q9}}</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">10</th>
+                            <td>How would you rate the recognition and appreciation of staff contributions within the organization?</td>
+                            <td>{{student.q10}}</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">11</th>
+                            <td>How challenging do you find the tasks and assignments given to you?</td>
+                            <td>{{student.q11}}</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">12</th>
+                            <td>Do you receive adequate support and resources to fulfill your job responsibilities?</td>
+                            <td>{{student.q12}}</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">13</th>
+                            <td>How would you rate the alignment of your role with the organization's goals and objectives?</td>
+                            <td>{{student.q13}}</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">14</th>
+                            <td>To what extent do you feel encouraged to pursue further education or skills development?</td>
+                            <td>{{student.q14}}</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">15</th>
+                            <td>How effective is the organization in providing necessary support and resources for special projects or initiatives?</td>
+                            <td>{{student.q15}}</td>
+                        </tr>
+                    </tbody>
+                    {% endif %}
+                    
+                </table>
+            </div>
+        </div>
+        <div class="row col-8 m-auto mb-3">
+            <h5>Review: {{student.feedback}}</h5>
+            <h4 class="text-danger"> Thank you for your Feedback...!</h4>
+        </div>
+    </div>
+</div>
+{% endif %}
+
+{% endblock body %}

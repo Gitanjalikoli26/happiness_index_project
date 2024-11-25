@@ -1,0 +1,78 @@
+{% extends 'base.html' %}
+{% block title %}All Report{% endblock title %}
+{% block body %}
+
+{% if user.is_authenticated %}
+<div class="container">
+    <div class="card mb-2">
+        <div class="row col-lg-11 m-auto mt-5">
+            <h1 class="text-center mt-5 mb-4">All Report</h1>
+            <hr>
+
+            <div class="col-lg-8 mt-2" style="height:450px; overflow: auto;">
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th scope="col">Name</th>
+                            <th scope="col">Designation</th>
+                            <th scope="col">Form Prediction</th>
+                            <th scope="col">Feedback</th>
+                            <th scope="col">Happiness Index</th>
+                            
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for student in student %}
+                        {% if student %}
+                        <tr>
+                            <td>{{student.name}}</td>
+                            <td>{{student.designation}}</td>
+                            <td>{{student.qus_pred}}</td>
+                            <td>{{student.feedback}}</td>
+                            <td>{{student.happiness_index}}</td>
+                        </tr>
+                        {% endif %}
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+            <div class="col-lg-4 mt-2 justify-content-center">
+                <h5 class="text-center mx-3">Report According to Submitted Feedback</h5>
+                <hr>
+                <div class="row col-lg-12">
+                    <div class="col-lg-4">
+                        <img src="static/img/happy_face.jpg" alt="static/img/happy_face.jpg"
+                            style="height: fit-content;">
+                    </div>
+                    <div class="col-lg-8">
+                        <h1 class="text-success">{{happy_percent}}%</h1>
+                        <h5 class="text-success">Happy People</h5>
+                    </div>
+                </div>
+                <div class="row col-lg-12 mt-3">
+                    <div class="col-lg-4">
+                        <img src="static/img/normal_face.jpg" alt="static/img/happy_face.jpg"
+                            style="height: fit-content;">
+                    </div>
+                    <div class="col-lg-8">
+                        <h1 class="text-warning">{{modarate_happy_percent}}%</h1>
+                        <h5 class="text-warning">Moderate Happy People</h5>
+                    </div>
+                </div>
+                <div class="row col-lg-12 mt-3">
+                    <div class="col-lg-4">
+                        <img src="static/img/not_happy_face.jpg" alt="static/img/happy_face.jpg"
+                            style="height: fit-content;">
+                    </div>
+                    <div class="col-lg-8">
+                        <h1 class="text-danger">{{not_happy_percent}}%</h1>
+                        <h5 class="text-danger">Not Happy People</h5>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endif %}
+
+{% endblock body %}
